@@ -1,0 +1,6 @@
+*~
+.DS_Store
+.sass-cache/
+*.swp
+build
+node_modules

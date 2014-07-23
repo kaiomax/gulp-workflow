@@ -1,0 +1,36 @@
+/*!
+ *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+
+/* FONT PATH
+ * -------------------------- */
+
+// Fonts in build directory
+$fonts-src: '../files/fonts/';
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url($fonts-src + 'fontawesome-webfont.eot?v=4.1.0');
+  src: url($fonts-src + 'fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url($fonts-src + 'fontawesome-webfont.woff?v=4.1.0') format('woff'), url($fonts-src + 'fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url($fonts-src + 'fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ // Font Awesome Cheat Sheet: http://fontawesome.bootstrapcheatsheets.com/
+
+ // Follow the example below to add new icon classes
+ 
+.fa-anchor:before {
+  content: "\f13d";
+}

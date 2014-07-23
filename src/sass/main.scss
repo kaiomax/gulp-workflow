@@ -1,0 +1,90 @@
+@import 'bourbon';
+
+// Displays the visual grid
+
+// $visual-grid: true;
+// $visual-grid-color: red;
+// $visual-grid-index: front;
+// $visual-grid-opacity: 0.1;
+
+@import 'neat';
+@import 'vendor/normalize';
+@import 'vendor/font-awesome';
+
+
+
+// - [ HELPERS ] -
+// ------------------------------------- //
+
+
+// -- { VARIABLES } --
+
+// --- Media queries ---
+$jack: new-breakpoint(max-width 480px 4);
+$queen: new-breakpoint(max-width 768px 8);
+$king: new-breakpoint(max-width 1024px 12);
+
+// --- Colors ---
+
+
+// -- { MIXINS } --
+
+
+
+// - [ BASE ] -
+// ------------------------------------- //
+
+
+// -- { TYPOGRAPHY } --
+
+body {
+  font: normal 100% sans-serif;
+  color: #EB4A4B;
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+		@include transition(all 0.3s);
+	}
+}
+
+h1 {
+	font-size: 50px;
+	line-height: 2em;
+}
+
+
+// - [ COMPONENTS ] -
+// ------------------------------------- //
+
+
+// -- { BUTTONS } --
+
+
+
+// - [ LAYOUT ] -
+// ------------------------------------- //
+
+
+.container {
+	@include outer-container;
+}
+
+
+// -- { HEADER } --
+
+
+// -- { FOOTER } --
+
+
+
+// - [ PAGES ] -
+// ------------------------------------- //
+
+
+// -- { INDEX } --
+
+.index {
+	text-align: center;
+}
