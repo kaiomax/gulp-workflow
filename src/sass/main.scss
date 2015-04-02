@@ -8,8 +8,12 @@
 // $visual-grid-opacity: 0.1;
 
 @import 'neat';
+
 @import 'vendor/normalize';
-@import 'vendor/font-awesome';
+
+$fa-font-path: '../files/fonts/';
+@import 'font-awesome';
+
 
 
 
@@ -44,9 +48,7 @@ body {
 
 a {
 	text-decoration: none;
-	&:hover {
-		@include transition(all 0.3s);
-	}
+	@include transition(all 0.3s);
 }
 
 h1 {
@@ -70,7 +72,6 @@ h1 {
 .container {
 	@include outer-container;
 }
-
 
 // -- { HEADER } --
 

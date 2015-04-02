@@ -1,7 +1,16 @@
 var gulp = require('gulp'),
 	runSequence = require('run-sequence'),
 	$ = require('gulp-load-plugins')();
-	
+
+var config = {
+	bowerDir: './bower_components'
+}
+
+// Install Bower packages
+gulp.task('bower', function() {
+	return $.bower()
+		.pipe(gulp.dest(config.bowerDir))
+});
 
 /* HTML Tasks
  ============================= */
@@ -24,7 +33,11 @@ gulp.task('sass', function() {
 	return gulp.src('src/sass/main.scss')
 		.pipe($.sass({
 			imagePath: 'build/files/images',
-			includePaths: require('node-neat').includePaths
+			includePaths: [
+				config.bowerDir + '/bourbon/dist',
+				config.bowerDir + '/neat/app/assets/stylesheets',
+				config.bowerDir + '/fontawesome/scss'
+			]
 		}))
 		.pipe(gulp.dest('build/css'))
 		.pipe($.connect.reload());
@@ -89,7 +102,7 @@ gulp.task('images', function(){
 
 // Copy fonts do the relative build directory
 gulp.task('copy-fonts', function(){
-	return gulp.src('src/files/fonts/**')
+	return gulp.src(config.bowerDir + '/fontawesome/fonts/**.*')
 		.pipe(gulp.dest('build/files/fonts'));
 });
 
@@ -129,4 +142,4 @@ gulp.task('build', function(){
 	runSequence('clean', 'general');
 });
 
-gulp.task('default', ['build', 'watch', 'connect']);
+gulp.task('default', ['bower', 'build', 'watch', 'connect']);
