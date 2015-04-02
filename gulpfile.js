@@ -1,15 +1,6 @@
 var gulp = require('gulp'),
-		jade = require('gulp-jade'),
-		sass = require('gulp-sass'),
-		uglify = require('gulp-uglify'),
-		concat = require('gulp-concat'),
-		changed = require('gulp-changed'),
-		imagemin = require('gulp-imagemin'),
-		runSequence = require('run-sequence'),
-		minifyCSS = require('gulp-minify-css'),
-		connect = require('gulp-connect'),
-		rename = require('gulp-rename'),
-		clean = require('gulp-clean');
+	runSequence = require('run-sequence'),
+	$ = require('gulp-load-plugins')();
 	
 
 /* HTML Tasks
@@ -17,11 +8,11 @@ var gulp = require('gulp'),
 
 gulp.task('jade', function() {
 	return gulp.src('src/templates/**/*.jade')
-		.pipe(jade({
+		.pipe($.jade({
 			pretty: true
 		}))
 		.pipe(gulp.dest('build'))
-		.pipe(connect.reload());
+		.pipe($.connect.reload());
 });
 
 
@@ -31,21 +22,21 @@ gulp.task('jade', function() {
 // Preprocess Sass
 gulp.task('sass', function() {
 	return gulp.src('src/sass/main.scss')
-		.pipe(sass({
+		.pipe($.sass({
 			imagePath: 'build/files/images',
 			includePaths: require('node-neat').includePaths
 		}))
 		.pipe(gulp.dest('build/css'))
-		.pipe(connect.reload());
+		.pipe($.connect.reload());
 });
 
 // Minify the main.css file
 gulp.task('minify-css', function(){
 	return gulp.src('build/css/main.css')
-		.pipe(minifyCSS({
+		.pipe($.minifyCss({
 			keepSpecialComments : 0
 		}))
-		.pipe(rename({suffix: '.min'}))
+		.pipe($.rename({suffix: '.min'}))
 		.pipe(gulp.dest('build/css'));
 });
 
@@ -64,16 +55,16 @@ gulp.task('concat', function(){
 			'src/js/vendor/*.js',
 			'src/js/main.js'
 		])
-		.pipe(concat('main.js'))
+		.pipe($.concat('main.js'))
 		.pipe(gulp.dest('build/js'))
-		.pipe(connect.reload());	
+		.pipe($.connect.reload());	
 });
 
 // Uglify the script concatenated
 gulp.task('uglify', function(){
 	return gulp.src('build/js/main.js')
-		.pipe(uglify({ mangle : false }))
-		.pipe(rename({suffix: '.min'}))
+		.pipe($.uglify({ mangle : false }))
+		.pipe($.rename({suffix: '.min'}))
 		.pipe(gulp.dest('build/js'));
 });
 
@@ -90,10 +81,10 @@ gulp.task('images', function(){
 	var dest = "build/files/images";
 
 	return gulp.src('src/files/images/**')
-		.pipe(changed(dest))
-		.pipe(imagemin())
+		.pipe($.changed(dest))
+		.pipe($.imagemin())
 		.pipe(gulp.dest(dest))
-		.pipe(connect.reload());
+		.pipe($.connect.reload());
 });
 
 // Copy fonts do the relative build directory
@@ -105,7 +96,7 @@ gulp.task('copy-fonts', function(){
 // Clean the build directory
 gulp.task('clean', function(){
 	return gulp.src('build', {read: false})
-		.pipe(clean());
+		.pipe($.clean());
 });
 
 
@@ -114,7 +105,7 @@ gulp.task('clean', function(){
 
 // Init the server and activate livereload
 gulp.task('connect', function(){
-	connect.server({
+	$.connect.server({
 		root: 'build',
 		livereload: true
 	});
