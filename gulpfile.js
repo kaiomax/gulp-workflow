@@ -34,7 +34,7 @@ gulp.task('sass', function() {
 		.pipe($.sass({
 			imagePath: 'build/files/images',
 			includePaths: [
-				config.bowerDir + '/bourbon/dist',
+				config.bowerDir + '/bourbon/app/assets/stylesheets',
 				config.bowerDir + '/neat/app/assets/stylesheets',
 				config.bowerDir + '/fontawesome/scss'
 			]
@@ -70,7 +70,7 @@ gulp.task('concat', function(){
 		])
 		.pipe($.concat('main.js'))
 		.pipe(gulp.dest('build/js'))
-		.pipe($.connect.reload());	
+		.pipe($.connect.reload());
 });
 
 // Uglify the script concatenated

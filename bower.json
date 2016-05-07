@@ -15,10 +15,7 @@
     "fontawesome": "~4.3.0"
   },
   "devDependencies": {
-    "bourbon": "3.2",
+    "bourbon": "~4.2.7",
     "neat": "~1.7.2"
-  },
-  "resolutions": {
-    "bourbon": "3.2"
   }
 }
