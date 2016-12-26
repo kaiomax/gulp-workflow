@@ -47,13 +47,13 @@ body {
 }
 
 a {
-	text-decoration: none;
-	@include transition(all 0.3s);
+  text-decoration: none;
+  @include transition(all 0.3s);
 }
 
 h1 {
-	font-size: 50px;
-	line-height: 2em;
+  font-size: 50px;
+  line-height: 2em;
 }
 
 
@@ -70,7 +70,7 @@ h1 {
 
 
 .container {
-	@include outer-container;
+  @include outer-container;
 }
 
 // -- { HEADER } --
@@ -87,5 +87,5 @@ h1 {
 // -- { INDEX } --
 
 .index {
-	text-align: center;
+  text-align: center;
 }
